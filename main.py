@@ -23,6 +23,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = LinearRegression()
 model.fit(X_train, y_train)
 
+# here we should save the model like:
+with open('saved_model.pkl', 'wb') as file:  
+    pickle.dump(model, file)   #we need to import pickle library
+
 # Шаг 6: Предсказание на всем диапазоне данных для построения прямой линии
 X_range = np.linspace(X['Mileage'].min(), X['Mileage'].max(), 100).reshape(-1, 1)
 y_pred_line = model.predict(X_range)
